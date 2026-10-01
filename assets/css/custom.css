@@ -1,0 +1,320 @@
+/* custom.css — carregue DEPOIS de main.css */
+
+:root {
+  --accent: #49bf9d;
+  --accent-dark: #23775f;
+  --ink: #1f2933;
+  --muted: #52606d;
+  --line: #dde3e8;
+  --surface: #f5f8f7;
+  --side-1: #12262b;
+  --side-2: #0d1a1f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+select,
+textarea {
+  font-family: "Source Sans 3", "Source Sans Pro", Helvetica, sans-serif;
+}
+body {
+  color: var(--muted);
+  line-height: 1.7em;
+}
+strong,
+b {
+  color: var(--ink);
+  font-weight: 600;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Links e botões com contraste adequado sobre fundo branco */
+#main a:not(.button):not(.image) {
+  color: var(--accent-dark);
+  border-bottom-color: rgba(35, 119, 95, 0.4);
+}
+.button {
+  color: var(--ink) !important;
+  border-color: var(--line);
+}
+.button.primary {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+.button.primary:hover {
+  background-color: #2b8a70;
+  border-color: #2b8a70;
+}
+
+/* Sidebar: fundo na paleta, hierarquia corrigida */
+#header {
+  background-color: var(--side-2);
+  background-image:
+    url("images/overlay.png"),
+    linear-gradient(165deg, var(--side-1) 0%, var(--side-2) 100%);
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
+}
+#header .image.avatar {
+  width: 8.5em;
+  box-shadow: 0 0 0 4px rgba(73, 191, 157, 0.55);
+}
+#header h1 {
+  color: #fff;
+  font-size: clamp(1.5em, 2.2vw, 2em);
+  line-height: 1.2;
+  margin: 0 0 0.4em 0;
+}
+#header h1 strong {
+  color: #fff;
+  font-weight: 700;
+}
+#header h2 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.05em;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 1.25em 0;
+}
+#header p {
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+#header strong,
+#header b {
+  font-weight: 600;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0 0 1.5em 0 !important;
+  padding: 0.25em 0.9em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 99px;
+  font-size: 0.8em !important;
+  color: #fff !important;
+}
+.status::before {
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Footer agora dentro da sidebar e visível */
+#header #footer {
+  background: none;
+  padding: 0;
+  position: static;
+  text-align: inherit;
+  width: 100%;
+}
+#footer .icons a {
+  color: rgba(255, 255, 255, 0.75);
+}
+#footer .icons a:hover {
+  color: var(--accent) !important;
+}
+#footer .copyright {
+  color: rgba(255, 255, 255, 0.55);
+}
+#footer .copyright li {
+  border-left-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Títulos de seção */
+#main > section > h2 {
+  position: relative;
+  padding-bottom: 0.6em;
+  margin-bottom: 1.25em;
+}
+#main > section > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5em;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+header.major h2 {
+  font-size: 2em;
+  line-height: 1.3;
+}
+
+/* Stack */
+.stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+  gap: 1.5em;
+}
+.stack h3 {
+  font-size: 1em;
+  margin: 0 0 0.6em 0;
+}
+
+ul.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  list-style: none;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+ul.tags li {
+  padding: 0.1em 0.75em;
+  border-radius: 99px;
+  background: rgba(73, 191, 157, 0.14);
+  color: var(--accent-dark);
+  font-size: 0.8em;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+/* Projetos: grade com cards de mesma altura */
+.row.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19em, 1fr));
+  gap: 1.75em;
+  margin: 0 0 2em 0;
+}
+.row.projects > .work-item {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0;
+  padding: 1.25em;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 0.6em;
+}
+.work-item .image {
+  margin: 0 0 1.25em 0;
+}
+.work-item .image img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+/* sem o véu cinza sobre os screenshots */
+.work-item .image.thumb:before {
+  opacity: 0;
+}
+.work-item .image.thumb:hover:before {
+  opacity: 0.3;
+}
+.work-item h3 {
+  font-size: 1.2em;
+  margin: 0 0 0.5em 0;
+}
+.work-item p {
+  font-size: 0.9em;
+  line-height: 1.55;
+  margin: 0 0 0.9em 0;
+}
+.work-item ul.features {
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin: 0 0 1.25em 0;
+  padding-left: 1.1em;
+}
+.work-item ul.features li {
+  padding-left: 0.2em;
+  margin-bottom: 0.4em;
+}
+.work-item ul.actions {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+/* Contato */
+.location {
+  font-size: 0.95em;
+  margin: 1.5em 0 0 0;
+}
+.location .icon {
+  color: var(--accent-dark);
+  margin-right: 0.4em;
+}
+
+.location + .location {
+  margin-top: 0.5em;
+}
+.email-text {
+  user-select: all;
+}
+
+/* Lightbox: setas e botão de fechar visíveis sobre qualquer imagem */
+.poptrox-popup .nav-next:before,
+.poptrox-popup .nav-previous:before,
+.poptrox-popup .closer:before {
+  background: rgba(18, 38, 43, 0.8);
+  color: #fff;
+}
+.poptrox-popup .nav-next:before,
+.poptrox-popup .nav-previous:before {
+  border-radius: 50%;
+  font-size: 1.8em;
+  width: 1.6em;
+  height: 1.6em;
+  line-height: 1.6em;
+  margin-top: -0.8em;
+}
+.poptrox-popup .nav-next:before {
+  right: 0.5em;
+}
+.poptrox-popup .nav-previous:before {
+  left: 0.5em;
+}
+.poptrox-popup .closer:before {
+  border-color: rgba(255, 255, 255, 0.85);
+}
+.poptrox-popup:hover .nav-next,
+.poptrox-popup:hover .nav-previous,
+.poptrox-popup:hover .closer {
+  opacity: 0.85;
+}
+.poptrox-popup:hover .nav-next:hover,
+.poptrox-popup:hover .nav-previous:hover,
+.poptrox-popup:hover .closer:hover {
+  opacity: 1;
+}
+
+/* Telas grandes: sidebar mais enxuta, mais espaço para o conteúdo */
+@media screen and (min-width: 981px) {
+  #header {
+    width: 30%;
+    overflow-y: auto;
+  }
+  #main {
+    margin-left: 30%;
+    width: 70%;
+    max-width: 62em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
